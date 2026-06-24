@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 - 在线移动游戏介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f9fc;
+      color: #1e2a33;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 60px 0 50px;
+      background: linear-gradient(145deg, #e0f2f1 0%, #d4ece8 100%);
+      border-radius: 0 0 48px 48px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #0d3b3e;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #1f4b4e;
+      max-width: 640px;
+      margin-top: 8px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: #1d7a7c;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin: 48px 0 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: 0 8px 24px rgba(0, 60, 60, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #dcf0ed;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 70, 70, 0.10);
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #126b6d;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #2f4a4d;
+      font-size: 0.98rem;
+    }
+
+    .emoji-icon {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* 说明区 */
+    .info-section {
+      background: white;
+      padding: 44px 32px;
+      border-radius: 32px;
+      margin: 24px 0 40px;
+      border: 1px solid #d3e6e2;
+    }
+
+    .info-section h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #0b4d50;
+      margin-bottom: 18px;
+    }
+
+    .info-section p {
+      margin-bottom: 1.2em;
+      color: #1d3c3f;
+    }
+
+    .info-section strong {
+      color: #0f6a6c;
+      font-weight: 600;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      background: #e6f3f0;
+      border-radius: 32px;
+      padding: 36px 32px;
+      margin: 20px 0 44px;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: #09494b;
+      margin-bottom: 24px;
+    }
+
+    .faq-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #c4ddd7;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #0f5c5e;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: #1e4346;
+      font-size: 0.95rem;
+    }
+
+    /* 底部 */
+    .footer {
+      padding: 40px 0 56px;
+      border-top: 1px solid #cde2dd;
+      color: #386064;
+    }
+
+    .footer p {
+      font-size: 0.95rem;
+    }
+
+    .footer a {
+      color: #0c6b6d;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .footer a:hover {
+      border-bottom-color: #0c6b6d;
+    }
+
+    .inline-link {
+      color: #0b787a;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(11, 120, 122, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #0b787a;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero {
+        padding: 40px 0 36px;
+      }
+
+      .card-grid {
+        gap: 18px;
+        margin: 32px 0 28px;
+      }
+
+      .card {
+        padding: 24px 18px;
+      }
+
+      .info-section {
+        padding: 28px 18px;
+      }
+
+      .faq-summary {
+        padding: 24px 18px;
+      }
+
+      .footer {
+        padding: 28px 0 40px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <span class="hero-tag">在线移动游戏平台</span>
+      <h1>爱游戏 · 轻松开玩</h1>
+      <p>一个专注于移动端体验的游戏站点，无需下载，打开浏览器即可找到你喜欢的休闲内容。界面简洁，加载直接，让游戏回归纯粹的乐趣。</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- 优势卡片区 -->
+    <div class="card-grid">
+      <div class="card">
+        <span class="emoji-icon">📱</span>
+        <h3>移动优先</h3>
+        <p>针对手机与平板优化操作和布局，触控响应流畅，大屏小屏都能获得舒适的浏览感受。</p>
+      </div>
+      <div class="card">
+        <span class="emoji-icon">⚡</span>
+        <h3>即开即玩</h3>
+        <p>无需注册或安装任何应用，页面加载完成即可开始。节省存储空间，随时随地消遣。</p>
+      </div>
+      <div class="card">
+        <span class="emoji-icon">🧩</span>
+        <h3>类型多样</h3>
+        <p>涵盖益智、动作、反应、策略等常见品类，定期有新增内容，保持新鲜感。</p>
+      </div>
+      <div class="card">
+        <span class="emoji-icon">🔒</span>
+        <h3>轻量可信</h3>
+        <p>站点结构简明，无诱导弹窗或冗余链接。所有游戏均来自公开稳定的资源，基本安全有保障。</p>
+      </div>
+    </div>
+
+    <!-- 说明区：站点介绍与可信说明 -->
+    <div class="info-section">
+      <h2>关于这个站点</h2>
+      <p><strong>爱游戏</strong> 是一个兴趣向的在线游戏集合页，我们筛选并整理了适合在移动设备上直接游玩的网页游戏。站点本身不存储游戏文件，仅提供指向公开游戏内容的导航与简要说明。</p>
+      <p>使用过程中，你不需要提供任何个人信息，也不会被要求安装额外插件。每个游戏都经过基础可用性测试——虽然无法保证百分百兼容所有设备，但主流浏览器（Chrome、Safari、Edge 等）均能获得良好表现。</p>
+      <p>如果你在寻找一个没有复杂注册流程、没有多余广告干扰的移动游戏入口，或许可以试试 <a href="https://online-mobile-igame.com" class="inline-link">爱游戏</a> 上的内容。我们持续关注游戏源的稳定状态，并会在页面内标注失效或变动。</p>
+      <p style="margin-top: 22px; background: #e2f0ed; padding: 14px 20px; border-radius: 18px; font-size: 0.95rem;">💡 小提示：由于游戏均为在线加载，建议在 Wi-Fi 或信号稳定的环境下打开，以获得更流畅的体验。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <section class="faq-summary">
+      <h2>常见疑问摘要</h2>
+      <div class="faq-item">
+        <strong>需要付费吗？</strong>
+        <p>完全免费。站内所有可玩的游戏均无需付费，也不包含内购引导。</p>
+      </div>
+      <div class="faq-item">
+        <strong>数据安全如何？</strong>
+        <p>我们不会收集任何用户数据，也不使用追踪脚本。游戏本身由第三方托管，但均选自相对可靠且公开的平台。</p>
+      </div>
+      <div class="faq-item">
+        <strong>游戏加载失败怎么办？</strong>
+        <p>可尝试刷新页面或更换网络环境。部分游戏可能因浏览器版本或缓存问题暂时无法运行，我们会尽量备注兼容信息。</p>
+      </div>
+      <div class="faq-item">
+        <strong>是否能在电脑上使用？</strong>
+        <p>可以，但界面专为移动端设计，电脑上浏览同样可用，某些游戏可能需要鼠标点击代替触控。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 底部链接 -->
+  <footer class="footer">
+    <div class="container">
+      <p>回到 <a href="https://online-mobile-igame.com">爱游戏</a> · 一个简单的移动游戏导航站点</p>
+      <p style="margin-top: 10px; font-size: 0.88rem; color: #51777a;">没有账户体系、不设排行榜、不收集隐私 —— 只提供能玩的游戏链接。</p>
+    </div>
+  </footer>
+</body>
+</html>
