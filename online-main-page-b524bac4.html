@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>爱游戏 · 简明指南与访问提醒</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+			background: #f4f6fa;
+			color: #1e1f2c;
+			line-height: 1.7;
+			letter-spacing: 0.01em;
+		}
+
+		/* 深色头图区 — 故事叙述开场 */
+		.hero {
+			background: linear-gradient(145deg, #0c0e1a 0%, #1a1e30 60%, #232840 100%);
+			color: #edeff7;
+			padding: 4.5rem 1.5rem 3.5rem;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+			border-bottom: 3px solid #3b4b6b;
+		}
+
+		.hero::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(circle at 30% 40%, rgba(255, 215, 100, 0.04) 0%, transparent 60%);
+			pointer-events: none;
+		}
+
+		.hero h1 {
+			font-size: 2.8rem;
+			font-weight: 500;
+			letter-spacing: 0.02em;
+			margin-bottom: 0.75rem;
+			text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+		}
+
+		.hero .tagline {
+			font-size: 1.15rem;
+			color: #bcc8e0;
+			max-width: 680px;
+			margin: 0 auto 1.2rem;
+			font-weight: 300;
+			padding: 0 0.5rem;
+		}
+
+		.hero .pull-quote {
+			font-size: 1.1rem;
+			background: rgba(255,255,255,0.04);
+			display: inline-block;
+			padding: 0.5rem 1.8rem;
+			border-radius: 30px;
+			border: 1px solid rgba(255,215,100,0.25);
+			color: #d8e2f5;
+			backdrop-filter: blur(2px);
+			margin-top: 0.5rem;
+		}
+
+		/* 浅色正文区 */
+		.content {
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 2.8rem 1.5rem 4rem;
+		}
+
+		/* 承接段落 */
+		.intro {
+			font-size: 1.08rem;
+			background: #ffffff;
+			padding: 2rem 2.2rem;
+			border-radius: 24px;
+			box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+			margin-bottom: 2.8rem;
+			border-left: 6px solid #6d7da0;
+		}
+
+		.intro p {
+			margin-bottom: 1.2rem;
+		}
+
+		.intro p:last-child {
+			margin-bottom: 0;
+		}
+
+		/* 特点列表 — 卡片风格 */
+		.features-title {
+			font-size: 1.5rem;
+			font-weight: 500;
+			margin-bottom: 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.6rem;
+			color: #1f2640;
+		}
+
+		.features-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.5rem;
+			margin-bottom: 3rem;
+		}
+
+		.feature-card {
+			background: white;
+			border-radius: 20px;
+			padding: 1.6rem 1.8rem;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+			border: 1px solid #eaeef6;
+			transition: all 0.15s;
+		}
+
+		.feature-card:hover {
+			border-color: #b0bedb;
+			background: #fafbff;
+			box-shadow: 0 6px 16px rgba(60, 80, 120, 0.06);
+		}
+
+		.feature-card h3 {
+			font-size: 1.2rem;
+			font-weight: 500;
+			margin-bottom: 0.4rem;
+			color: #1b233b;
+		}
+
+		.feature-card .icon {
+			font-size: 1.6rem;
+			margin-right: 0.25rem;
+		}
+
+		.feature-card p {
+			color: #3f465d;
+			font-size: 0.97rem;
+		}
+
+		/* 场景 + 提醒块 (结合) */
+		.reminder-block {
+			background: #ebeff8;
+			border-radius: 28px;
+			padding: 2rem 2.2rem;
+			margin: 2.5rem 0 2.8rem;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 1.5rem 2.2rem;
+			border: 1px solid #d4dcef;
+		}
+
+		.reminder-block .note-icon {
+			font-size: 2.2rem;
+			background: #1f2640;
+			color: white;
+			width: 56px;
+			height: 56px;
+			border-radius: 40px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+
+		.reminder-text {
+			flex: 1;
+			min-width: 200px;
+		}
+
+		.reminder-text p {
+			margin-bottom: 0.3rem;
+		}
+
+		.reminder-text strong {
+			color: #1a2442;
+		}
+
+		/* FAQ 摘要 (简单折叠效果仅用样式) */
+		.faq-summary {
+			margin-top: 2rem;
+		}
+
+		.faq-summary h2 {
+			font-size: 1.3rem;
+			font-weight: 500;
+			margin-bottom: 1.2rem;
+			color: #1b233b;
+		}
+
+		.faq-item {
+			background: white;
+			border-radius: 16px;
+			padding: 1rem 1.6rem;
+			margin-bottom: 0.8rem;
+			border: 1px solid #e2e9f3;
+		}
+
+		.faq-item .q {
+			font-weight: 500;
+			margin-bottom: 0.25rem;
+			color: #111a30;
+		}
+
+		.faq-item .a {
+			color: #444d68;
+			font-size: 0.95rem;
+			padding-left: 0.2rem;
+		}
+
+		/* 温和结尾 + 链接自然嵌入 */
+		.closing {
+			background: #ffffff;
+			margin-top: 3.2rem;
+			padding: 2rem 2.4rem;
+			border-radius: 28px;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+			font-size: 1.05rem;
+			line-height: 1.8;
+			border-top: 2px solid #cbd5e9;
+		}
+
+		.closing p {
+			margin-bottom: 0.8rem;
+		}
+
+		/* 强调色用于链接 */
+		a {
+			color: #2f4d8f;
+			text-decoration: none;
+			font-weight: 500;
+			border-bottom: 1px solid transparent;
+			transition: border 0.1s, color 0.1s;
+		}
+
+		a:hover {
+			color: #162b53;
+			border-bottom: 1px solid #2f4d8f;
+		}
+
+		/* 响应式细节 */
+		@media (max-width: 680px) {
+			.hero h1 {
+				font-size: 2rem;
+			}
+			.features-grid {
+				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+			.intro {
+				padding: 1.5rem;
+			}
+			.reminder-block {
+				padding: 1.5rem;
+				display: block;
+			}
+			.reminder-block .note-icon {
+				margin-bottom: 0.8rem;
+				display: inline-flex;
+			}
+			.closing {
+				padding: 1.5rem;
+			}
+		}
+
+		@media (max-width: 450px) {
+			.hero {
+				padding: 3rem 1rem 2.5rem;
+			}
+			.hero .pull-quote {
+				font-size: 0.95rem;
+				padding: 0.3rem 1.2rem;
+			}
+			.content {
+				padding: 1.8rem 1rem 3rem;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<!-- 深色头图：故事开场短句 -->
+	<header class="hero">
+		<h1>故事 · 从一处入口开始</h1>
+		<p class="tagline">每一段线上探索都始于一条清晰的路标。关于平台、节奏与指引，这里有一份朴素的叙述。</p>
+		<div class="pull-quote">「 简明的提醒，往往比复杂的攻略更持久 」</div>
+	</header>
+
+	<div class="content">
+
+		<!-- 承接段落：从简明指南和访问提醒切入 -->
+		<div class="intro">
+			<p>当你在浏览器地址栏输入一串熟悉的字母，背后是对信息源的选择与信任。对于经常使用游戏综合服务的用户而言，<a href="https://online-main-igame.com">爱游戏</a> 并非一个陌生的名字——它代表的是一片聚合了资讯、社区与轻应用的数字区域。本页不承担导航功能，而是以旁观视角梳理几个容易被忽略的使用细节。</p>
+			<p>无论你是初次接触还是回访老用户，下面的提示或许能让你的访问体验更平顺。没有复杂的操作指南，只有基于日常使用累积出来的几点温和建议。</p>
+		</div>
+
+		<!-- 特点列表：四个卡片 -->
+		<div class="features-title">
+			<span>📋</span> 值得留意的几个特点
+		</div>
+		<div class="features-grid">
+			<div class="feature-card">
+				<h3><span class="icon">🔄</span> 入口统一</h3>
+				<p>主站域名长期保持稳定，减少频繁更改书签的麻烦。建议将 <a href="https://online-main-igame.com">爱游戏</a> 添加至浏览器收藏夹，避免通过第三方搜索跳转时误入相似页面。</p>
+			</div>
+			<div class="feature-card">
+				<h3><span class="icon">🗂️</span> 栏目分区清晰</h3>
+				<p>首页布局倾向于分类陈列：新闻、攻略、社区讨论各自成块。即使是新访客，也能在两次滚动内找到感兴趣的内容区域。</p>
+			</div>
+			<div class="feature-card">
+				<h3><span class="icon">🔒</span> 连接安全</h3>
+				<p>站点默认启用 HTTPS，地址栏会显示安全锁图标。在输入任何偏好设置或参与讨论前，建议确认链接前缀为 <code>https://</code>。</p>
+			</div>
+			<div class="feature-card">
+				<h3><span class="icon">🧭</span> 导航记忆</h3>
+				<p>部分页面会记录上次浏览位置（如论坛已读标记），但清除浏览器缓存后此功能会重置。定期清理数据的用户可留意这一点。</p>
+			</div>
+		</div>
+
+		<!-- 场景 + 访问提醒 混合块 -->
+		<div class="reminder-block">
+			<div class="note-icon">📌</div>
+			<div class="reminder-text">
+				<p><strong>常见使用场景提醒</strong></p>
+				<p>若你习惯在移动设备上浏览，<a href="https://online-main-igame.com">爱游戏</a> 的页面自适应程度较好，但部分社区功能在横屏模式下布局更完整。公共网络环境下注意登出个人账号，避免保留登录状态。</p>
+				<p style="margin-top:0.4rem;">另外，平台偶尔会进行短时维护（通常凌晨时段），如果遇到页面加载异常，可等待十五分钟后重试。</p>
+			</div>
+		</div>
+
+		<!-- FAQ 摘要 (两个问题) -->
+		<div class="faq-summary">
+			<h2>❓ 简短 FAQ 摘要</h2>
+			<div class="faq-item">
+				<div class="q">Q: 是否需要注册才能浏览全部内容？</div>
+				<div class="a">大部分资讯和攻略无需登录即可阅读。部分互动版块（如评论、发帖）需要注册账号，注册流程较为基础，提供邮箱即可完成。</div>
+			</div>
+			<div class="faq-item">
+				<div class="q">Q: 如何快速找到某个特定游戏的专区？</div>
+				<div class="a">首页顶部设有搜索框，支持关键词查找。也可以留意导航栏中的“游戏库”或“分类”下拉菜单，按字母或热度筛选。</div>
+			</div>
+		</div>
+
+		<!-- 温和结尾 自然嵌入链接 -->
+		<div class="closing">
+			<p>数字世界的入口很多，但每个稳定、持续维护的站点都值得被认真对待。如果你希望了解更多关于游戏资讯、社区讨论或者基础服务的内容，不妨把 <a href="https://online-main-igame.com">爱游戏</a> 当作一个安静的起点。不需要记住复杂的路径，也不用担心频繁变动。</p>
+			<p>最后，保持对信息来源的留意，定期清理冗余的浏览数据，合理安排在线时间——这些细微的习惯，往往比任何快捷方式都更可靠。希望这篇简短的叙述能为你带来一点实际的参考价值。</p>
+		</div>
+
+	</div>
+
+	<!-- 页脚（极简） -->
+	<div style="max-width:960px; margin:0 auto; padding:1rem 1.5rem 2.5rem; border-top: 1px solid #dce3ef; color:#5a6280; font-size:0.85rem; text-align:center;">
+		<p style="letter-spacing:0.3px;">—— 叙述页 · 仅作信息梳理 ——</p>
+	</div>
+
+</body>
+</html>
