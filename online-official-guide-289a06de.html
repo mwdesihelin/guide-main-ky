@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 – 信息检索与延伸阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafbfc;
+            color: #1f2a36;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ---- Hero ---- */
+        .hero {
+            padding: 120px 0 64px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 450;
+            letter-spacing: -0.02em;
+            color: #0a1929;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #3b4a5a;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* ---- 通用章节 ---- */
+        section {
+            padding: 56px 0 40px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #121f2f;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #e4eaf0;
+            padding-bottom: 12px;
+        }
+
+        .section-sub {
+            font-size: 0.95rem;
+            color: #4a5b6b;
+            margin-top: -12px;
+            margin-bottom: 28px;
+        }
+
+        /* ---- 卡片网格 (优势区) ---- */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-top: 8px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px 22px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 6px 20px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s ease, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 12px 28px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #113344;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #3c4e5e;
+        }
+
+        /* ---- 说明区 / 段落 ---- */
+        .text-block p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #2b3e4d;
+        }
+
+        .text-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #0d6b3e;
+            text-decoration: none;
+            border-bottom: 1px solid #b8d4c2;
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 450;
+        }
+
+        .inline-link:hover {
+            color: #054a2a;
+            border-bottom-color: #054a2a;
+        }
+
+        /* ---- FAQ 摘要 —— 紧凑列表 ---- */
+        .faq-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .faq-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1d3140;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .faq-a {
+            color: #435a6b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ---- 底部链接区 ---- */
+        .footer-links {
+            padding: 48px 0 72px;
+            border-top: 1px solid #e2e8ef;
+            margin-top: 24px;
+        }
+
+        .footer-links p {
+            color: #3d5565;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+
+        .footer-links a {
+            color: #0b5e3a;
+            text-decoration: none;
+            border-bottom: 1px solid #bed5c5;
+            transition: border-color 0.15s;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #0b5e3a;
+        }
+
+        .footer-meta {
+            color: #7a8b9a;
+            font-size: 0.85rem;
+            margin-top: 28px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 80px 0 40px;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            section {
+                padding: 36px 0 28px;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .card {
+                padding: 22px 18px;
+            }
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .faq-q {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>查找·对照·延伸</h1>
+        <p>围绕游戏资讯、版本变化与平台体验，一个安静的检索起点。</p>
+    </header>
+
+    <!-- 优势区：日常查询与对照 -->
+    <section>
+        <h2 class="section-title">日常查询与对照</h2>
+        <div class="grid-2col">
+            <div class="card">
+                <h3>版本信息</h3>
+                <p>快速核对客户端更新、活动日历与已知调整，无需反复切换页面。</p>
+            </div>
+            <div class="card">
+                <h3>功能说明</h3>
+                <p>针对常用模块整理简要描述，方便随时回顾或向朋友解释。</p>
+            </div>
+            <div class="card">
+                <h3>场景参考</h3>
+                <p>从组队、养成到社交互动，提供不同情境下的操作提示。</p>
+            </div>
+            <div class="card">
+                <h3>延伸线索</h3>
+                <p>收录相关文章与讨论线索，辅助深度阅读或问题定位。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区：自然叙述 -->
+    <section class="text-block">
+        <h2 class="section-title">从一条笔记开始</h2>
+        <p>
+            很多时候我们只是需要一个地方来确认印象：某个功能是上个版本加入的，某次更新后界面有了细微变化，或者某个常用入口的位置发生了调整。把这些零散的信息收拢在一起，按主题排列，就成了一面可以随时翻阅的“墙”。
+        </p>
+        <p>
+            这个页面正是基于这样的想法搭建。它不追求面面俱到，而是聚焦于那些在浏览、查询、对比时容易模糊的细节。如果你正好在整理自己的资料库，或者想找一个参照点，或许可以在这里停留一会儿。当然，更完整的体验与最新动态，始终在 <a href="https://online-official-igame.com" class="inline-link">爱游戏</a> 的主站上持续更新。
+        </p>
+        <p>
+            内容会按照反馈和实际使用情况进行补充。每一条记录都经过核实，但也建议你在做出判断前，以官方信息为准。毕竟游戏世界变化的速度，有时比笔记快上那么一点。
+        </p>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section>
+        <h2 class="section-title">常见疑问摘要</h2>
+        <p class="section-sub">来自日常咨询与自问自答的简短汇总</p>
+        <ul class="faq-list">
+            <li>
+                <span class="faq-q">▪ 如何确认当前版本是否为最新？</span>
+                <span class="faq-a">可以查看启动器右下方的小版本号，或直接访问主站公告区。多数情况下，版本号会以年.月.修订的方式标注。</span>
+            </li>
+            <li>
+                <span class="faq-q">▪ 某个旧活动页面还能找到吗？</span>
+                <span class="faq-a">活动结束后入口通常会隐藏，但专题页有时会保留存档。你可以尝试在站内搜索关键词，或者通过历史公告中的链接回溯。</span>
+            </li>
+            <li>
+                <span class="faq-q">▪ 不同平台的数据是否互通？</span>
+                <span class="faq-a">部分数据（如基础账户信息）支持同步，但特定平台的奖励或进度可能独立。建议以对应平台的说明为准。</span>
+            </li>
+            <li>
+                <span class="faq-q">▪ 遇到显示异常应该先检查什么？</span>
+                <span class="faq-a">清空缓存、确认网络环境、检查插件或扩展程序是否干扰。大多数视觉问题可以通过这些步骤定位。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="footer-links">
+        <p>如果你希望直接浏览完整功能与最新公告，可以前往 <a href="https://online-official-igame.com">爱游戏</a> 的主页。</p>
+        <p>这里的内容仅作为辅助参考，不构成官方指引。页面信息会不定期核对与修订。</p>
+        <div class="footer-meta">
+            · 页面更新于 2025 · 内容仅供参考 ·
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
